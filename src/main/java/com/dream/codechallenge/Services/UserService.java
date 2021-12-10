@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.dream.codechallenge.Repository.UserRepository;
 import com.dream.codechallenge.Services.exception.ObjectNotFoundException;
 import com.dream.codechallenge.domain.User;
+import com.dream.codechallenge.dto.UserDTO;
 
 @Service
 public class UserService {
@@ -20,18 +21,27 @@ public class UserService {
 		return repo.findAll();
 
 	}
-	
+
 	public User findById(String id) {
-		
+
 		User user = repo.findById(id).orElse(null);
-		
-		if(user == null) {
-			
+
+		if (user == null) {
+
 			throw new ObjectNotFoundException("Objeto não encontrado");
 		}
-		
+
 		return user;
-		
+
+	}
+
+	public User insert(User obj) {
+		return repo.insert(obj);
+
+	}
+
+	public User fromDTO(UserDTO objDto) {
+		return new User(objDto.getId(), objDto.getName(), objDto.getCpf());
 	}
 
 }
