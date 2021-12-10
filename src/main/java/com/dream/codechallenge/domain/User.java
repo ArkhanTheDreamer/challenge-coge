@@ -12,7 +12,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private String Id;
+	private String id;
 	
 	private String name;
 	private String cpf;
@@ -23,17 +23,17 @@ public class User implements Serializable {
 
 	public User(String id, String name, String cpf) {
 		super();
-		Id = id;
+		id = id;
 		this.name = name;
 		this.cpf = cpf;
 	}
 
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(String id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getName() {
@@ -54,7 +54,7 @@ public class User implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(Id, other.Id);
+		return Objects.equals(id, other.id);
 	}
 
 }
