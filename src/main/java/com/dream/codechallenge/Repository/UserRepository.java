@@ -9,5 +9,8 @@ import com.dream.codechallenge.domain.User;
 public interface UserRepository extends MongoRepository<User, String> {
 
 	
+
+
+
 	
 }
