@@ -2,6 +2,7 @@ package com.dream.codechallenge.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ import com.dream.codechallenge.dto.UserDTO;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
+
+	Scanner in = new Scanner(System.in);
 
 	@Autowired
 	private UserService service;
@@ -69,6 +72,25 @@ public class UserResource {
 		User obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);
+
+		return ResponseEntity.noContent().build();
+	}
+
+	@PutMapping(value = "{id}/deposito")
+	public ResponseEntity<Void> deposito(@RequestBody UserDTO objDTO, @PathVariable String cpf) {
+
+		User obj = service.fromDTO(objDTO);
+		obj.setCpf(cpf);
+		obj = service.deposito(obj);
+		double depo = 0;
+		System.out.println("Insira o valor do depósito");
+		depo = in.nextDouble();
+
+		if (depo > 2000) {
+			System.out.println("O valor excede o máximo permitido, por favor, deposite uim valor inferior a R$2000,00");
+
+			return ResponseEntity.noContent().build();
+		}
 
 		return ResponseEntity.noContent().build();
 	}

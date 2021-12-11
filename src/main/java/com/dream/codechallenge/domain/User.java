@@ -16,16 +16,27 @@ public class User implements Serializable {
 	
 	private String name;
 	private String cpf;
+	private double reais;
 
 	public User() {
 
 	}
 
-	public User(String id, String name, String cpf) {
+	public User(String id, String name, String cpf, double reais) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
+		this.reais = reais;
+		
+	}
+
+	public double getReais() {
+		return reais;
+	}
+
+	public void setReais(double reais) {
+		this.reais = reais;
 	}
 
 	public String getId() {

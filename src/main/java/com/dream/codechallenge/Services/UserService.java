@@ -1,8 +1,6 @@
 package com.dream.codechallenge.Services;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,11 +57,24 @@ public class UserService {
 
 		newObj.setName(obj.getName());
 		newObj.setCpf(obj.getCpf());
-		
+
+	}
+
+	public User deposito(User obj) {
+
+		User newObj = repo.findById(obj.getId()).orElse(null);
+		updateReais(newObj, obj);
+		return repo.save(newObj);
+	}
+
+	private void updateReais(User newObj, User obj) {
+
+		newObj.setReais(obj.getReais());
+
 	}
 
 	public User fromDTO(UserDTO objDto) {
-		return new User(objDto.getId(), objDto.getName(), objDto.getCpf());
+		return new User(objDto.getId(), objDto.getName(), objDto.getCpf(), objDto.getReais());
 	}
 
 }

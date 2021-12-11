@@ -12,6 +12,7 @@ public class UserDTO implements Serializable {
 
 	private String name;
 	private String cpf;
+	private double reais;
 	
 	
 	public UserDTO() {
@@ -23,7 +24,16 @@ public class UserDTO implements Serializable {
 		id = obj.getId();
 		name = obj.getName();
 		cpf = obj.getCpf();
+		reais = obj.getReais();
 		
+	}
+
+	public double getReais() {
+		return reais;
+	}
+
+	public void setReais(double reais) {
+		this.reais = reais;
 	}
 
 	public String getId() {
