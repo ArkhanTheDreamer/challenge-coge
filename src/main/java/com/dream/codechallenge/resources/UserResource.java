@@ -77,17 +77,17 @@ public class UserResource {
 	}
 
 	@PutMapping(value = "{id}/deposito")
-	public ResponseEntity<Void> deposito(@RequestBody UserDTO objDTO, @PathVariable String cpf) {
+	public ResponseEntity<Void> deposito(@RequestBody UserDTO objDTO, @PathVariable String id) {
 
 		User obj = service.fromDTO(objDTO);
-		obj.setCpf(cpf);
+		obj.setCpf(id);
 		obj = service.deposito(obj);
 		double depo = 0;
 		System.out.println("Insira o valor do depósito");
 		depo = in.nextDouble();
 
 		if (depo > 2000) {
-			System.out.println("O valor excede o máximo permitido, por favor, deposite uim valor inferior a R$2000,00");
+			System.out.println("O valor excede o máximo permitido, por favor, deposite um valor inferior a R$2000,00");
 
 			return ResponseEntity.noContent().build();
 		}

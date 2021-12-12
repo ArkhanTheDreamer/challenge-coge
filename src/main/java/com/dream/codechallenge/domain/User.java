@@ -18,6 +18,8 @@ public class User implements Serializable {
 	private String cpf;
 	private double reais;
 
+
+
 	public User() {
 
 	}
@@ -79,5 +81,7 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	
 
 }

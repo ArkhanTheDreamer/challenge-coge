@@ -1,6 +1,7 @@
 package com.dream.codechallenge.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,9 +9,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Post implements Serializable {
+public class Account implements Serializable {
 
-	User user;
+	
 	
 	private static final long serialVersionUID = 1L;
 
@@ -21,19 +22,21 @@ public class Post implements Serializable {
 
 	private String title;
 
-	private double depo;
-
-	public Post() {
+	private BigDecimal saldo;
+	
+	public Account() {
 
 	}
 
-	public Post(String id, Date data, String title, double depo) {
+	public Account(String id, Date data, String title, BigDecimal saldo) {
 		super();
 		this.id = id;
 		this.data = data;
 		this.title = title;
-		this.depo = depo;
+		this.saldo = saldo;
 	}
+
+	
 
 	public String getId() {
 		return id;
@@ -59,12 +62,12 @@ public class Post implements Serializable {
 		this.title = title;
 	}
 
-	public double getDepo() {
-		return depo;
+	public BigDecimal getSaldo() {
+		return saldo;
 	}
 
-	public void setBody(double depo) {
-		this.depo = depo;
+	public void setSaldo(BigDecimal saldo) {
+		this.saldo = saldo;
 	}
 
 	@Override
@@ -80,7 +83,7 @@ public class Post implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Post other = (Post) obj;
+		Account other = (Account) obj;
 		return Objects.equals(id, other.id);
 	}
 
